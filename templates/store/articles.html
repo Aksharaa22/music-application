@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+body{
+ background-color: #ebecee;
+}
+</style>
+
+    <div class="container" style="background-color: #ebecee; padding: 40px;" >
+        <div class="row">
+            <div class="col-6">
+                        <h2 class="text-centre">Music blogs</h2>
+                <hr>
+                        {% for n3 in text3 %}
+                        <h5> - {{n3}} </h5>
+                        {% endfor %}
+                        <br>
+    
+                </div>
+                        <img src="{{list2}}" alt="Girl in a jacket" width="500" height="400">
+                      
+                        
+            <div class="col-6">
+              
+                        <h3 class="text-centre">Music News</h3>
+                 <hr>
+                        {% for n in text %}
+                        <h5> -  {{n}} </h5>
+                        {% endfor %}
+                        <br>
+    
+                </div>
+                <div class="col-6">
+    
+                        
+                  
+                        <h3 class="text-centre">Music blogs</h3>
+                 <hr>
+                        {% for n2 in text2 %}
+                        <h5> - {{n2}} </h5>
+                        {% endfor %}
+                        <br>
+                </div>
+    
+            </div>
+    
+    </div>
+
+{% endblock %}

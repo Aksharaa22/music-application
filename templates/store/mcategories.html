@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+      {% block content %}
+
+      <!-- HERO SECTION-->
+      <div class="container">
+        
+
+
+        <!-- CATEGORIES SECTION-->
+        <section class="pt-5">
+          <header class="text-center">
+            <h2 class="h5 text-uppercase mb-4">Music shows-Concerts available</h2>
+            
+          </header>
+         
+
+          <div class="row">
+           
+
+    
+  
+                <div class="col-lg-4 col-sm-6">
+                 <a class="d-block"  href="{% url 'store:mcategory_products'  %}">
+                   
+                      <img class="img-fluid w-100" src="{% static 'img/ar1.jpg' %}" alt="AR Rahman">
+                     
+                   
+                    <strong class="category-item-title">AR Rahman</strong>
+                    <h6> <a class="reset-anchor" >A.R.Rahman music show</a></h6>
+                    <h6> <a class="reset-anchor" >Hindi songs</a></h6>
+                    <h6> <a class="reset-anchor" >Chennai</a></h6>
+                    <h6> <a class="reset-anchor" >01 JUNE 2022</a></h6>
+                    <p class="small text-muted">Rs:450</p>
+                  </a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6">
+                  <a class="d-block"  href="{% url 'store:mcategorytwo_products'  %}">
+                    
+                       <img class="img-fluid w-100" src="{% static 'img/yuvan.jpg' %}" alt="Yuvan">
+                      
+                    
+                     <strong class="category-item-title">Yuvan</strong>
+                     <h6> <a class="reset-anchor" >Yuvan music show</a></h6>
+                     <h6> <a class="reset-anchor" >Tamil songs</a></h6>
+                     <h6> <a class="reset-anchor" >Coimbatore</a></h6>
+                     <h6> <a class="reset-anchor" >02 JUNE  2022</a></h6>
+                     <p class="small text-muted">Rs:350</p>
+                   </a>
+                 </div>
+
+                 <div class="col-lg-4 col-sm-6">
+                  <a class="d-block"  href="{% url 'store:mcategory_products'  %}">
+                    
+                       <img class="img-fluid w-100" src="{% static 'img/carnatic.jpg' %}" alt="Carnatic">
+                      
+                    
+                     <strong class="category-item-title">Carnatic</strong>
+                     <h6> <a class="reset-anchor" >Carnatic music show</a></h6>
+                     <h6> <a class="reset-anchor" >Classical songs</a></h6>
+                     <h6> <a class="reset-anchor" >Bangalore</a></h6>
+                     <h6> <a class="reset-anchor" >03 JUNE 2022</a></h6>
+                     <p class="small text-muted">Rs:250</p>
+                   </a>
+                 </div>
+
+                 
+                 <div class="col-lg-4 col-sm-6">
+                  <a class="d-block"  href="{% url 'store:mcategorytwo_products'  %}">
+                    
+                       <img class="img-fluid w-100" src="{% static 'img/international.jpg' %}" alt="Western">
+                      
+                    
+                     <strong class="category-item-title">Western</strong>
+                     <h6> <a class="reset-anchor" >Western music show</a></h6>
+                     <h6> <a class="reset-anchor" >English songs</a></h6>
+                     <h6> <a class="reset-anchor" >Mumbai</a></h6>
+                     <h6> <a class="reset-anchor" >04 JUNE  2022</a></h6>
+                     <p class="small text-muted">Rs:500</p>
+                   </a>
+                 </div>
+
+
+                  
+              
+             
+            </div>
+
+        </section>
+
+        </div>
+  
+        {% endblock content %}
+  

@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="fw-bold">Podcasts</h1>
+                    </div>
+                    <div class="card-body">
+                        <table class="table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Singer</th>
+                                    <th>Category</th>
+                                    <th>Image</th>
+                                    <th>Audio-song</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for Audio_store in audio_list %}
+                                    <tr>
+                                        <td>{{Audio_store.name }}</td>
+                                        <td>{{Audio_store.singer }}</td>
+                                        <td>{{Audio_store.tags }}</td>
+                                        {% if Audio_store.image %}
+                                            <td>
+                                                <img src="{{ Audio_store.image.url }}" alt="" class="prod-size">
+                                            </td>
+                                        {% else %}
+                                            <td>
+                                                <img src="{% static 'img/product-1.jpg' %}" alt="" class="prod-size">
+                                            </td>
+                                        {% endif %}
+                                        <td>
+                                        <audio controls >
+                                            <source src="/media/{{Audio_store.record}}" type="audio/mpeg">
+                                        </audio>
+                                        </td>
+                                        <!--<td>
+                                             <a href="#" class="btn btn-primary">Click</a>
+                                        </td>-->
+                                        
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+</section>
+{% endblock content %}
+
+
+<!--<div class="card">
+    <div class="card-header">
+        Name: {{Audio_store.name }}
+    </div>
+    <div class="card-body">
+      
+      <p class="card-text">
+        
+           <li>Singer: {{Audio_store.singer }}</li> 
+           <li>Category:  {{Audio_store.tags }} </li> 
+           <li>Image: {{Audio_store.image }}</li> 
+           <li>Audio song: {{Audio_store.record }}</li> 
+     
+      </p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>-->
+
+
+
+  
+
+<!--<section class="py-5">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-6">
+         
+          <div class="row m-sm-0">
+            
+            <div class="col-sm-12 order-1 order-sm-2">
+              
+              
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+        <h1>Podcast</h1>
+         
+          <p class="text-small mb-4">Product</p>
+
+          <div class="row align-items-stretch mb-4">
+          
+          <audio controls >
+              <source src="" type="audio/mpeg">
+            </audio>
+
+            <br><br>
+              <a download href="" style="padding-top: 2%;">
+                <button class="btn btn-dark btn-lg btn-block h-100 d-flex align-items-center justify-content-center px-0">Download Song</button></a>
+              
+               </div>
+                <ul class="list-unstyled small d-inline-block">
+          
+            
+            <li class="px-3 py-2 mb-1 bg-white text-muted"><strong class="text-uppercase text-dark">Category:</strong><a class="reset-anchor ml-2" href=""></a></li>
+            <li class="px-3 py-2 mb-1 bg-white text-muted"><strong class="text-uppercase text-dark">Singer name:</strong><a class="reset-anchor ml-2" href="#">Singer name</a></li>
+          </ul>
+               </div>
+      </div>
+      
+       </div>
+    </div>
+  </section>-->
+

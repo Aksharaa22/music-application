@@ -1,0 +1,138 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block content %}
+        <h2>Booking Confirmation</h2>
+        <form action="" method="post">
+
+        {% csrf_token %}
+        <h2>View details</h2>
+        
+       
+        <!-- Button to Open the Modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            Bill details
+        </button>
+
+        <!-- The Modal -->
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Music Show details</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><b>Music name:</b> {{book.bus_name}}</li>
+                        <li class="list-group-item"><b>Location:</b> {{book.source}}</li>
+                        <li class="list-group-item"><b>Language:</b> {{book.dest}}</li>
+                        <li class="list-group-item"><b>Number of seats:</b> {{book.nos}}</li>
+                        <li class="list-group-item"><b>Price:</b> {{book.price}}</li>
+                        <li class="list-group-item"><b>Cost:</b> {{book.tot_cost}}</li>
+                        <input type="hidden" id="total-cost" value="{{book.tot_cost}}">
+                        <li class="list-group-item"><b>Date:</b> {{book.date}}</li>
+                        <li class="list-group-item"><b>Time:</b> {{book.time}}</li>
+                    </ul>
+
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="button" id="rzp-button1" class="btn btn-primary">Pay</button>
+                </div>
+
+                <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    var totalCost=document.querySelector('#total-cost').value
+var options = {
+    "key": "rzp_test_6n6SQcbSrcOw97", // Enter the Key ID generated from the Dashboard
+    "name": "Sound Cloud",
+    "description": "Payment gateway",
+    "amount":Number(totalCost*100),
+    "currency":"INR",
+    "image": "https://example.com/your_logo",
+    "payment_id": "{{payment_id}}",
+    "order_id": "{{order_id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "handler": function (response){
+        // alert(response.razorpay_payment_id);
+        // alert(response.razorpay_order_id)
+        alert("success")  
+        // fetch("/payment-success/", {
+        //         body: JSON.stringify({ 
+        //             order_id : data.order_id,
+        //             amount : Number(totalCost*100),
+        //         }),
+        //         method: "POST",
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //             "X-CSRFToken": "{{ csrf_token }}"
+        //         }
+        //     })
+        //     .then((res) => res.json())
+        //     .then((data) => {
+        //         console.log(data)
+        //         // if(data.status_code==200) {        
+        //         //alert("success")
+        //         //     setTimeout(()=>location.href="/",7000)
+        //         // }
+        //         // else {
+        //        alert("error")
+        //         // }
+        //     })
+      
+    },
+    "prefill": {
+        "name": "{{user}}",
+        "email": "{{mail}}",
+        "contact": "9566366972"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+});
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+
+            </div>
+        </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br><br>
+        <br>
+        <br><br>
+        <br><br><br>
+        <br>
+        
+        </form>
+
+
+
+    {% endblock content %}

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+      {% block content %}
+
+      <!-- HERO SECTION-->
+      <div class="container">
+        
+
+
+        <!-- CATEGORIES SECTION-->
+        <section class="pt-5">
+          <header class="text-center">
+            <h2 class="h5 text-uppercase mb-4">Music shows-Concerts available</h2>
+            
+          </header>
+	<!-- Menu -->	
+	<!-- Home -->
+	<!-- Search -->
+	<!-- Destinations -->
+	<div class="destinations" id="destinations">
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					
+					<div class="section_title"><h2>
+						
+						{% if True in m%}
+						Upcoming MOVIES
+						{% else %}
+						TRENDING MOVIES
+						{% endif %}
+						
+					</h2>
+						
+						
+					
+					</div>
+					
+			
+
+				</div>
+			</div>			
+			<div class="row destinations_row">
+				<div class="col">
+					<div class="destinations_container item_grid">
+						<!-- Destination -->
+						{% for i in m %}
+						{% if i.up == False %}
+						<div class="destination item">
+							<div class="destination_image">
+								<a href="/details/{{i.id}}/"><img src="{{i.image.url}}" alt=""></a>
+								
+								
+								
+							</div>
+							<div class="destination_content">
+								<div class="destination_title"><a href="/details/{{i.id}}/">{{i.name}}</a></div>
+								<div class="destination_subtitle"><p>{{i.type}}</p></div>
+								<div class="destination_price">Release Date: {{i.date}}</div>
+								<div class="destination_list">
+									<ul>
+										<li>{{i.language}}</li>
+										<li>Rating : {{i.rating}}</li>
+									<!--<li>{{ i.duration }}</li>
+										
+										 <li>{{ i.cast }}</li>
+										<li>{{ i.trailer }}</li> -->
+										
+									</ul>
+								</div>
+							</div>
+						</div>
+						{% endif %}
+						{% endfor %}
+						<!-- Destination -->
+						
+						
+					</div>
+				</div>
+			</div>			
+		</div>
+	</div>
+	<!-- Footer -->	
+</section>
+</div>
+  
+{% endblock content %}

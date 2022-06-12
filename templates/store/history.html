@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+      
+   
+    <h2 style="color: rgb(158, 60, 60); text-align: center;  padding-top: 2%;">History</h2>
+    
+    {% if  history|length < 1 %} 
+      <h3 style="text-align: center; padding-top: 5%;">Your have no song in your History</h3>
+    {% endif %} 
+
+<!--<h2 style="color: rgb(158, 60, 60); text-align: center;  padding-top: 2%;">History</h2>
+
+  <h3 style="text-align: center; padding-top: 5%;">Your have no song in your History</h3>-->
+
+
+<div class="container"  style=" padding-left: 15%;">
+  {% for i in history reversed %}
+<div class="card mb-3" style="max-width: 940px; padding-top: 0%;">
+    
+    <div class="row no-gutters">
+       <div class="col-md-4">
+        <img src=" {{ i.product_image.url }}" class="card-img" alt="...">                                                                                   I
+       </div>
+
+        <div class="col-md-8">
+         <div class="card-body">
+            <h5 class="card-title" style="color:  green; font-weight: 550;">{{i.title}} </h5>
+          <p class="card-text">Category: {{i.category}}</p>
+        
+           <a href="/product/{{i.category}}"><button class="btn btn-outline-danger">Listen Song</button></a>
+         </div>
+       </div>
+    </div>
+
+  </div>
+  {% endfor %}
+</div>
+</div>
+{% endblock content %}

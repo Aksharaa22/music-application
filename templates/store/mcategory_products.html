@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block content %}
+    
+      <div class="container">
+        <!-- HERO SECTION-->
+       
+        
+        <section class="py-5">
+          <div class="container p-0">
+            <div class="row">
+              <!-- SHOP SIDEBAR-->
+              
+
+              <!-- SHOP LISTING-->
+              <div class="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
+               
+
+                <div class="row">
+                    {% if products %}
+                        {% for product in products %}
+                            <div class="col-lg-4 col-sm-6">
+                            <div class="product text-center">
+                                <div class="mb-3 position-relative">
+
+                            <div class="badge text-white badge-"></div>
+
+                            <a class="d-block" href="{% url 'store:mdetailone' %}">
+                              {% if product.product_image %}
+                                <img class="img-fluid w-100" src="{{product.product_image.url}}" alt="{{product.title}}">
+                              {% else %}
+                                <img class="img-fluid w-100" src="{% static 'img/product-1.jpg' %}" alt="{{product.title}}">
+                              {% endif %}
+                            </a>
+
+                            <div class="product-overlay">
+                              <ul class="mb-0 list-inline">
+                               
+                                <li class="list-inline-item m-0 p-0">
+                                  {% comment %} <a class="btn btn-sm btn-dark" href="{% url 'store:mdetailone'  %}">View</a> {% endcomment %}
+
+                                  <form action="{% url 'store:mdetailone' %}">
+                                  
+                                    <button type="submit" class="btn btn-sm btn-dark">View</button>
+                                  </form>
+
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <h6> <a class="reset-anchor" href="{% url 'store:mdetailone' %}">{{product.title}}</a></h6>
+                         <p class="small text-muted">Rs:{{product.price}}</p>
+                            </div>
+                            </div>
+
+                    
+                        {% endfor %}
+                    {% endif %}
+
+                      <!-- PRODUCT-->
+                       <!--<div class="col-lg-4 col-sm-6">
+                        <div class="product text-center">
+                          <div class="mb-3 position-relative">
+
+                            <div class="badge text-white badge-"></div>
+
+                            <a class="d-block" href="">
+                             
+                              
+                             
+                                <img class="img-fluid w-100" src="{% static 'img/product-1.jpg' %}" alt="YUVAN">
+                              
+                            </a>
+
+                            <div class="product-overlay">
+                              <ul class="mb-0 list-inline">
+                                
+                                <li class="list-inline-item m-0 p-0">
+                                  <a class="btn btn-sm btn-dark" href="">view</a> 
+
+                                  <form action="">
+                                    
+                                    <button type="submit" class="btn btn-sm btn-dark">view</button>
+                                  </form>
+
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <h6> <a class="reset-anchor" href="">yuvan</a></h6>
+                          <p class="small text-muted">${{product.price}}</p>
+                        </div>
+                      </div>-->
+
+                   
+                    
+
+                </div>
+                <!-- PAGINATION-->
+               
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      {% endblock content %}
